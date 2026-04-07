@@ -22,8 +22,8 @@ class Admin::AdminUsersController < Admin::BaseController
   end
 
   def load_user_creations
-    @works = @user.works.paginate(page: params[:works_page])
-    @comments = @user.comments.paginate(page: params[:comments_page])
+    @works = @user.works.sort_by(&:id).paginate(page: params[:works_page])
+    @comments = @user.comments.sort_by(&:id).paginate(page: params[:comments_page])
   end
 
   def index
